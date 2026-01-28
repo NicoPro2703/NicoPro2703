@@ -3,199 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NicoPro2703 | Official Web</title>
+    <title>NicoPro2703 | Ultra Portal</title>
     
-    <meta name="description" content="Portal oficial de NicoPro2703. Streamer, Creador de Contenido y Gaming.">
+    <meta name="description" content="NicoPro2703 - Official Streaming & Content Creator Hub.">
     <link rel="icon" type="image/png" href="ninja-head-mascot-logo-for-esport-ninja-t-shirt-design-ninja-logo-ninja-sticker-vector.jpg">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --primary: #ae00ff;
             --secondary: #00d4ff;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
+            --accent: #ff00c8;
+            --bg-dark: #050505;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; cursor: default; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Outfit', sans-serif;
-            background: #050505;
+            background-color: var(--bg-dark);
             color: white;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden; /* Evita scroll innecesario */
+            overflow: hidden;
+            perspective: 1000px;
         }
 
-        /* Fondo de Estrellas Animadas */
-        .background {
+        /* Fondo de Nebulosa Animada */
+        .nebula-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: url('Sin título.jpg') no-repeat center center/cover;
             z-index: -2;
-            filter: brightness(0.4);
+            filter: brightness(0.3) contrast(1.2);
+            transform: scale(1.1);
+            animation: slowMove 20s infinite alternate ease-in-out;
         }
 
-        .animated-overlay {
+        @keyframes slowMove {
+            from { transform: scale(1.1) rotate(0deg); }
+            to { transform: scale(1.2) rotate(2deg); }
+        }
+
+        .gradient-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, transparent 0%, #000 100%);
+            background: radial-gradient(circle at center, rgba(174,0,255,0.15) 0%, #000 80%);
             z-index: -1;
         }
 
-        /* Contenedor con Iluminación Neon */
-        .main-card {
+        /* Contenedor Principal con Glow */
+        .glass-card {
             position: relative;
             z-index: 10;
             width: 90%;
-            max-width: 440px;
-            padding: 50px 30px;
-            background: var(--glass);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border-radius: 40px;
-            border: 1px solid var(--border);
+            max-width: 420px;
+            padding: 60px 35px 40px;
+            background: rgba(10, 10, 10, 0.4);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border-radius: 45px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
-            box-shadow: 0 0 40px rgba(0,0,0,0.8);
-            animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 0 60px rgba(0,0,0,0.9), inset 0 0 20px rgba(174,0,255,0.1);
+            animation: entrance 1s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9) translateY(30px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+        @keyframes entrance {
+            0% { opacity: 0; transform: translateY(100px) rotateX(-20deg); }
+            100% { opacity: 1; transform: translateY(0) rotateX(0); }
         }
 
-        /* Avatar Pro */
-        .profile-pic {
+        /* Avatar Pro con Anillo Animado */
+        .avatar-wrap {
             position: relative;
-            width: 140px;
-            height: 140px;
-            margin: -115px auto 25px;
+            width: 150px;
+            height: 150px;
+            margin: -130px auto 30px;
         }
 
-        .profile-pic img {
-            width: 100%;
-            height: 100%;
+        .avatar-wrap img {
+            width: 100%; height: 100%;
             border-radius: 50%;
-            border: 4px solid var(--primary);
+            border: 4px solid transparent;
+            background: linear-gradient(var(--bg-dark), var(--bg-dark)) padding-box,
+                        linear-gradient(45deg, var(--primary), var(--secondary)) border-box;
             object-fit: cover;
-            box-shadow: 0 0 30px var(--primary);
-            transition: 0.5s;
+            box-shadow: 0 0 40px rgba(174,0,255,0.4);
+            transition: 0.6s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        .profile-pic:hover img {
-            transform: rotate(5deg) scale(1.05);
-            border-color: var(--secondary);
-            box-shadow: 0 0 30px var(--secondary);
+        .avatar-wrap:hover img {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 50px var(--primary);
         }
 
-        /* Tipografía */
         h1 {
             font-family: 'Syncopate', sans-serif;
-            font-size: 1.7rem;
-            letter-spacing: 4px;
-            margin-bottom: 5px;
-            color: #fff;
-            text-shadow: 0 0 10px var(--primary);
-        }
-
-        .tagline {
-            font-size: 0.8rem;
-            text-transform: uppercase;
+            font-size: 1.8rem;
             letter-spacing: 5px;
-            color: var(--secondary);
-            margin-bottom: 35px;
-            font-weight: 600;
+            background: linear-gradient(to bottom, #fff 40%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
         }
 
-        /* Links Estilo Cyberpunk */
-        .links { display: flex; flex-direction: column; gap: 15px; }
+        .role-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin-bottom: 40px;
+            display: inline-block;
+            border-bottom: 1px solid var(--secondary);
+            padding-bottom: 4px;
+        }
 
-        .btn {
+        /* Botones Next-Gen */
+        .btn-stack { display: flex; flex-direction: column; gap: 18px; }
+
+        .button-pro {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 18px 25px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            color: #fff;
+            padding: 20px 28px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 22px;
+            color: rgba(255,255,255,0.9);
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.4s all;
             overflow: hidden;
-            transition: 0.4s;
-            cursor: pointer;
         }
 
-        .btn i:first-child { font-size: 1.4rem; color: var(--primary); transition: 0.3s; }
-
-        .btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--secondary);
-            transform: translateX(8px);
-        }
-
-        .btn:hover i:first-child {
-            color: var(--secondary);
-            filter: drop-shadow(0 0 8px var(--secondary));
-        }
-
-        /* Footer */
-        .footer {
+        /* Brillo de escaneo */
+        .button-pro::after {
+            content: '';
             position: absolute;
-            bottom: -60px;
-            width: 100%;
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            opacity: 0.4;
-            left: 0;
+            top: -50%; left: -60%;
+            width: 20%; height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(30deg);
+            transition: 0s;
+        }
+
+        .button-pro:hover::after {
+            left: 120%;
+            transition: 0.8s ease-in-out;
+        }
+
+        .button-pro:hover {
+            background: rgba(174, 0, 255, 0.15);
+            border-color: var(--primary);
+            transform: scale(1.04) translateX(10px);
+            color: #fff;
+        }
+
+        .button-pro i:first-child { 
+            font-size: 1.5rem; 
+            color: var(--primary); 
+            filter: drop-shadow(0 0 5px var(--primary));
+        }
+
+        .footer-info {
+            margin-top: 40px;
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            opacity: 0.3;
+            font-weight: 700;
         }
     </style>
 </head>
 <body>
 
-    <div class="background"></div>
-    <div class="animated-overlay"></div>
+    <div class="nebula-bg"></div>
+    <div class="gradient-overlay"></div>
 
-    <div class="main-card">
-        <div class="profile-pic">
+    <div class="glass-card">
+        <div class="avatar-wrap">
             <img src="ninja-head-mascot-logo-for-esport-ninja-t-shirt-design-ninja-logo-ninja-sticker-vector.jpg" alt="NicoPro2703">
         </div>
 
         <h1>NicoPro2703</h1>
-        <div class="tagline">Streaming Elite</div>
+        <div class="role-tag">Digital Warrior</div>
 
-        <div class="links">
-            <a href="https://youtube.com/@NicoPro2703" target="_blank" class="btn">
-                <span><i class="fab fa-youtube"></i> &nbsp; YOUTUBE</span>
-                <i class="fas fa-external-link-alt" style="font-size: 0.7rem; opacity: 0.3;"></i>
+        <div class="btn-stack">
+            <a href="https://youtube.com/@NicoPro2703" target="_blank" class="button-pro">
+                <span><i class="fab fa-youtube"></i> &nbsp;&nbsp; YOUTUBE</span>
+                <i class="fas fa-arrow-right" style="opacity: 0.3;"></i>
             </a>
-            <a href="https://www.twitch.tv/nicopro2703_" target="_blank" class="btn">
-                <span><i class="fab fa-twitch"></i> &nbsp; TWITCH</span>
-                <i class="fas fa-external-link-alt" style="font-size: 0.7rem; opacity: 0.3;"></i>
+            <a href="https://www.twitch.tv/nicopro2703_" target="_blank" class="button-pro">
+                <span><i class="fab fa-twitch"></i> &nbsp;&nbsp; TWITCH</span>
+                <i class="fas fa-arrow-right" style="opacity: 0.3;"></i>
             </a>
-            <a href="https://www.tiktok.com/@nicopro2703" target="_blank" class="btn">
-                <span><i class="fab fa-tiktok"></i> &nbsp; TIKTOK</span>
-                <i class="fas fa-external-link-alt" style="font-size: 0.7rem; opacity: 0.3;"></i>
+            <a href="https://www.tiktok.com/@nicopro2703" target="_blank" class="button-pro">
+                <span><i class="fab fa-tiktok"></i> &nbsp;&nbsp; TIKTOK</span>
+                <i class="fas fa-arrow-right" style="opacity: 0.3;"></i>
             </a>
-            <a href="https://x.com/DiazCrespi1522" target="_blank" class="btn">
-                <span><i class="fab fa-x-twitter"></i> &nbsp; TWITTER</span>
-                <i class="fas fa-external-link-alt" style="font-size: 0.7rem; opacity: 0.3;"></i>
+            <a href="https://x.com/DiazCrespi1522" target="_blank" class="button-pro">
+                <span><i class="fab fa-x-twitter"></i> &nbsp;&nbsp; TWITTER</span>
+                <i class="fas fa-arrow-right" style="opacity: 0.3;"></i>
             </a>
-            <a href="https://wa.me/668516659" target="_blank" class="btn">
-                <span><i class="fab fa-whatsapp"></i> &nbsp; WHATSAPP</span>
-                <i class="fas fa-external-link-alt" style="font-size: 0.7rem; opacity: 0.3;"></i>
+            <a href="https://wa.me/668516659" target="_blank" class="button-pro">
+                <span><i class="fab fa-whatsapp"></i> &nbsp;&nbsp; WHATSAPP</span>
+                <i class="fas fa-arrow-right" style="opacity: 0.3;"></i>
             </a>
         </div>
 
-        <div class="footer">
-            &copy; 2026 NICOPRO2703 // DIGITAL LEGACY
+        <div class="footer-info">
+            EST. 2026 // SYSTEM: NICOPRO ONLINE
         </div>
     </div>
 
