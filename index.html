@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NicoPro2703 | Ultra Link</title>
+    <title>NicoPro2703 | Mi Portal</title>
     
-    <meta name="description" content="NicoPro2703 Oficial - Streaming & Content.">
     <link rel="icon" type="image/png" href="ninja-head-mascot-logo-for-esport-ninja-t-shirt-design-ninja-logo-ninja-sticker-vector.jpg">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #d500f9; /* Rosa Neón Intenso */
-            --secondary: #651fff; /* Morado Eléctrico */
+            --primary: #ff007f; /* Rosa Eléctrico */
+            --secondary: #ae00ff; /* Morado */
             --bg: #050505;
-            --glass: rgba(20, 20, 20, 0.6);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,65 +28,40 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            perspective: 1000px; /* Clave para el 3D */
+            perspective: 1000px;
         }
 
-        /* Fondo Animado CSS Puro */
         .bg-animation {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: url('Sin título.jpg') center/cover no-repeat;
             z-index: -2;
-            filter: brightness(0.3);
-            transform: scale(1.1);
+            filter: brightness(0.25);
         }
 
-        .particles {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                radial-gradient(white 1px, transparent 1px),
-                radial-gradient(rgba(213, 0, 249, 0.5) 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.2;
-            z-index: -1;
-            animation: moveParticles 20s linear infinite;
-        }
-
-        @keyframes moveParticles {
-            from { transform: translateY(0); }
-            to { transform: translateY(-50px); }
-        }
-
-        /* Tarjeta con Efecto Tilt 3D */
         .card-container {
             position: relative;
             width: 90%;
             max-width: 400px;
-            transform-style: preserve-3d; /* Importante para 3D */
+            transform-style: preserve-3d;
         }
 
         .card {
-            background: var(--glass);
+            background: rgba(15, 15, 15, 0.7);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(213, 0, 249, 0.3);
+            border: 1px solid rgba(255, 0, 127, 0.2);
             border-radius: 30px;
             padding: 50px 30px;
             text-align: center;
-            box-shadow: 
-                0 0 30px rgba(0,0,0,0.8),
-                inset 0 0 20px rgba(213, 0, 249, 0.1);
-            transition: transform 0.1s ease-out; /* Suaviza el movimiento */
+            box-shadow: 0 0 40px rgba(0,0,0,0.9);
+            transition: transform 0.1s ease-out;
         }
 
-        /* Avatar Brillante */
         .avatar {
-            width: 140px;
-            height: 140px;
+            width: 130px;
+            height: 130px;
             margin: -100px auto 20px;
-            position: relative;
-            z-index: 2;
         }
 
         .avatar img {
@@ -96,91 +69,62 @@
             object-fit: cover;
             border-radius: 50%;
             border: 3px solid var(--primary);
-            box-shadow: 0 0 35px var(--primary);
-            transition: 0.3s;
+            box-shadow: 0 0 25px var(--primary);
         }
 
-        .avatar:hover img {
-            box-shadow: 0 0 50px var(--primary), 0 0 15px white;
-            transform: scale(1.05);
-        }
-
-        /* Texto Glitch (Efecto de fallo) */
         h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
             color: #fff;
-            position: relative;
-            display: inline-block;
             margin-bottom: 5px;
-            text-shadow: 2px 2px var(--secondary);
+            text-shadow: 0 0 10px var(--secondary);
         }
 
-        /* Subtítulo */
-        .role {
+        /* AQUÍ ESTÁ EL CAMBIO DE TEXTO */
+        .tagline {
             color: var(--primary);
             font-weight: 700;
-            letter-spacing: 4px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin-bottom: 35px;
-            text-shadow: 0 0 10px rgba(213, 0, 249, 0.6);
         }
 
-        /* Botones Pro */
-        .links {
-            display: flex; flex-direction: column; gap: 15px;
-            transform: translateZ(30px); /* Los botones flotan sobre la tarjeta */
-        }
+        .links { display: flex; flex-direction: column; gap: 12px; }
 
         .btn {
             display: flex; align-items: center; justify-content: space-between;
             background: rgba(255, 255, 255, 0.05);
-            padding: 18px 25px;
+            padding: 16px 20px;
             border-radius: 15px;
             text-decoration: none;
             color: white;
-            font-weight: 700;
-            font-size: 1.1rem;
+            font-weight: 600;
             border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            position: relative;
-            overflow: hidden;
+            transition: 0.3s;
         }
 
-        .btn i { font-size: 1.5rem; color: var(--primary); transition: 0.3s; }
+        .btn i { font-size: 1.3rem; color: var(--primary); }
 
-        /* Efecto Hover Rosa Explosivo */
         .btn:hover {
-            background: rgba(213, 0, 249, 0.2);
+            background: rgba(255, 0, 127, 0.15);
             border-color: var(--primary);
-            transform: scale(1.02) translateX(5px);
-            box-shadow: 0 0 20px rgba(213, 0, 249, 0.4);
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
         }
 
-        .btn:hover i { color: white; filter: drop-shadow(0 0 5px white); }
-
-        /* Footer */
         .footer {
-            margin-top: 40px;
+            margin-top: 35px;
             font-size: 0.7rem;
-            color: rgba(255,255,255,0.4);
-            letter-spacing: 2px;
-        }
-
-        /* Ajuste Móvil */
-        @media (max-width: 600px) {
-            .card-container { width: 95%; }
-            h1 { font-size: 1.6rem; }
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
     <div class="bg-animation"></div>
-    <div class="particles"></div>
 
     <div class="card-container" id="tiltCard">
         <div class="card">
@@ -188,56 +132,45 @@
                 <img src="ninja-head-mascot-logo-for-esport-ninja-t-shirt-design-ninja-logo-ninja-sticker-vector.jpg" alt="NicoPro2703">
             </div>
 
-            <h1 data-text="NicoPro2703">NicoPro2703</h1>
-            <div class="role">Content Creator</div>
+            <h1>NicoPro2703</h1>
+            <div class="tagline">En camino al éxito</div>
 
             <div class="links">
                 <a href="https://youtube.com/@NicoPro2703" target="_blank" class="btn">
                     <span><i class="fab fa-youtube"></i> YouTube</span>
-                    <i class="fas fa-chevron-right" style="opacity:0.5; font-size:0.8rem"></i>
+                    <i class="fas fa-chevron-right" style="opacity:0.3"></i>
                 </a>
                 <a href="https://www.twitch.tv/nicopro2703_" target="_blank" class="btn">
                     <span><i class="fab fa-twitch"></i> Twitch</span>
-                    <i class="fas fa-chevron-right" style="opacity:0.5; font-size:0.8rem"></i>
+                    <i class="fas fa-chevron-right" style="opacity:0.3"></i>
                 </a>
                 <a href="https://www.tiktok.com/@nicopro2703" target="_blank" class="btn">
                     <span><i class="fab fa-tiktok"></i> TikTok</span>
-                    <i class="fas fa-chevron-right" style="opacity:0.5; font-size:0.8rem"></i>
+                    <i class="fas fa-chevron-right" style="opacity:0.3"></i>
                 </a>
                 <a href="https://x.com/DiazCrespi1522" target="_blank" class="btn">
                     <span><i class="fab fa-x-twitter"></i> Twitter</span>
-                    <i class="fas fa-chevron-right" style="opacity:0.5; font-size:0.8rem"></i>
+                    <i class="fas fa-chevron-right" style="opacity:0.3"></i>
                 </a>
                 <a href="https://wa.me/668516659" target="_blank" class="btn">
                     <span><i class="fab fa-whatsapp"></i> WhatsApp</span>
-                    <i class="fas fa-chevron-right" style="opacity:0.5; font-size:0.8rem"></i>
+                    <i class="fas fa-chevron-right" style="opacity:0.3"></i>
                 </a>
             </div>
 
             <div class="footer">
-                &copy; 2026 NICOPRO2703
+                © 2026 NICOPRO2703
             </div>
         </div>
     </div>
 
     <script>
         const card = document.getElementById('tiltCard');
-        const body = document.querySelector('body');
-
-        // Movimiento en PC
-        body.addEventListener('mousemove', (e) => {
-            let xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-            let yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+        document.addEventListener('mousemove', (e) => {
+            let xAxis = (window.innerWidth / 2 - e.pageX) / 30;
+            let yAxis = (window.innerHeight / 2 - e.pageY) / 30;
             card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
         });
-
-        // Resetear al salir (opcional, para que vuelva al centro suave)
-        body.addEventListener('mouseleave', () => {
-            card.style.transform = `rotateY(0deg) rotateX(0deg)`;
-        });
-        
-        // Bloquear arrastre de imagen para que no moleste
-        document.querySelector('img').ondragstart = function() { return false; };
     </script>
 
 </body>
