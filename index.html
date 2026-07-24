@@ -15,6 +15,7 @@
             --primary: #ff007f; /* Rosa Eléctrico */
             --secondary: #ae00ff; /* Morado */
             --bg: #050505;
+            --danger: #ff4444; /* Rojo para acciones destructivas */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -299,6 +300,21 @@
             font-size: 0.9rem;
         }
 
+        /* Botón para eliminar cuenta */
+        .delete-btn {
+            background: none;
+            border: none;
+            color: var(--danger);
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: 0.2s;
+        }
+
+        .delete-btn:hover {
+            text-decoration: underline;
+            text-shadow: 0 0 5px var(--danger);
+        }
+
         .hidden { display: none !important; }
     </style>
 </head>
@@ -333,7 +349,10 @@
             <div id="gameSection" class="hidden">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
                     <span style="font-size: 0.9rem;">Jugador: <strong id="playerTag" style="color:var(--primary);"></strong></span>
-                    <button onclick="logout()" style="background:none; border:none; color:#888; cursor:pointer; font-size:0.8rem;"><i class="fas fa-sign-out-alt"></i> Salir</button>
+                    <div>
+                        <button onclick="logout()" style="background:none; border:none; color:#888; cursor:pointer; font-size:0.8rem; margin-right: 8px;"><i class="fas fa-sign-out-alt"></i> Salir</button>
+                        <button onclick="deleteAccount()" class="delete-btn"><i class="fas fa-trash-alt"></i> Eliminar Cuenta</button>
+                    </div>
                 </div>
 
                 <h3 class="game-title">CLICKER NEÓN (10s)</h3>
@@ -497,6 +516,21 @@
             currentUser = null;
             localStorage.removeItem('np_session');
             checkSession();
+        }
+
+        // --- NUEVA FUNCIÓN: ELIMINAR CUENTA ---
+        function deleteAccount() {
+            if (!currentUser) return;
+
+            const confirmDelete = confirm(`¿Estás seguro de que deseas eliminar la cuenta "${currentUser}"? Se borra permanentemente de la clasificación.`);
+            
+            if (confirmDelete) {
+                const users = getUsers();
+                delete users[currentUser]; // Elimina la clave del objeto
+                localStorage.setItem('np_users', JSON.stringify(users)); // Guarda la lista actualizada
+                
+                logout(); // Cierra la sesión activa y refresca las vistas
+            }
         }
 
         function checkSession() {
